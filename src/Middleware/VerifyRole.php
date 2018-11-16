@@ -35,9 +35,9 @@ class VerifyRole
      *
      * @return mixed
      */
-    public function handle($request, Closure $next, $role)
+    public function handle($request, Closure $next, ...$role)
     {
-        if ($this->auth->check() && $this->auth->user()->hasRole($role)) {
+        if ($this->auth->check() && $this->auth->user()->hasOneRole($role)) {
             return $next($request);
         }
 
